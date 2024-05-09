@@ -1,0 +1,38 @@
+<div class="d-flex w-100 justify-content-between">
+  <div>
+    Title:
+    <input
+      type="text"
+      [(ngModel)]="query"
+      (input)="search()"
+      placeholder="Search movies..."
+    />
+  </div>
+  <div>
+    Release Year:
+    <input
+      type="text"
+      [(ngModel)]="releaseYear"
+      (input)="search()"
+      placeholder="Search release Year..."
+    />
+  </div>
+</div>
+
+<ul>
+  <li *ngFor="let movie of filteredMovies">
+    <a routerLink="/movie/{{ movie.id }}">{{ movie.title }}</a>
+    <div class="d-flex w-100 justify-content-between">
+      <p class="mb-1">
+        <span class="spanMargin5">Release Date: {{ movie.release_date }} </span>
+        <span class="spanMargin5"> Budget: {{ movie.budget }}</span>
+        <span class="spanMargin5"> Duration: {{ movie.duration }}</span>
+      </p>
+      <small
+        ><button class="btn btn-light">
+          <span [routerLink]="[movie.id]">Details</span>
+        </button></small
+      >
+    </div>
+  </li>
+</ul>
